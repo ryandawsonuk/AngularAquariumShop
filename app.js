@@ -64,7 +64,12 @@ function FishShopController(FishService) {
     })
     .catch(function (error) {
       console.log("Problem with compatibility server call "+error);
-      shop.message = 'Technical issue, please try again';
+      //if we've got access to a detailed error from the API then use it but we may not have access
+      if(error!==null && error.data!==null && error.data.errorMessage!==null){
+        shop.message = error.data.errorMessage;
+      } else{
+        shop.message = 'Technical issue, please try again';
+      }
     });
 
   };
@@ -74,8 +79,9 @@ function FishShopController(FishService) {
     //this way the item won't go into tank if there's an error
     var fish = shop.tank.slice();
     fish.splice(itemIndex, 1);
+    
     //compatible now? check and perform action if so
-    shop.checkCompatibilityAndAction(shop.tank,shop.performRemove,itemIndex);
+    shop.checkCompatibilityAndAction(fish,shop.performRemove,itemIndex);
 
   };
 
