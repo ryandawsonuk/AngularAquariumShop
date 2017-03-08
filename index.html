@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" ng-app="FishShopApp">
+  <head>
+    <title>Fill a fish tank</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+<body>
+   <div ng-controller="FishShopController as fishCtrl">
+      <div>
+        <h1>Choose Fish for your new Tank!</h1>
+      </div>
+
+      <div  >
+        <b>{{fishCtrl.message}}</b>
+        <!-- should be a buy button at the bottom, enabled only if compatible -->
+        <button ng-model="button" ng-disabled="!fishCtrl.canLiveTogether" onclick="alert('Sorry, online purchase not available, please call store!')">Buy Tank!</button>
+      </div>
+
+      <div>
+        <div style="display: inline-block;">
+          <h3 ng-if="fishCtrl.shopFish.length == 0" >No fish in shop.</h3>
+          <div  ng-if="fishCtrl.shopFish.length > 0" >
+            <shop-fish items="fishCtrl.shopFish" on-add="fishCtrl.addItem(index)"></shop-fish>
+          </div>
+        </div>
+
+        <div  style="display: inline-block;">
+
+          <h3 ng-if="fishCtrl.tank.length == 0" >No fish in tank - choose fish from shop.</h3>
+          <div  ng-if="fishCtrl.tank.length > 0" >
+            <tank-fish items="fishCtrl.tank" on-remove="fishCtrl.removeItem(index)"></tank-fish>
+          </div>
+        </div>
+      </div>
+
+    </div>
+</body>
+</html>
