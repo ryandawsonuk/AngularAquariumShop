@@ -5,7 +5,7 @@
   <th>Action</th>
 </thead>
 <tr ng-repeat="item in items">
-  <td>{{item}}</td>
+  <td><span ng-bind="item"></span></td>
   <td>
     <button ng-click="onAdd({index: $index});">Add to tank!</button></td>
 </tr>

@@ -13,9 +13,10 @@
       </div>
 
       <div  >
-        <b>{{fishCtrl.message}}</b>
+        <span ng-bind="fishCtrl.message" style="font-weight: bold"></span>
         <!-- should be a buy button at the bottom, enabled only if compatible -->
-        <button ng-model="button" ng-disabled="!fishCtrl.canLiveTogether" onclick="alert('Sorry, online purchase not available, please call store!')">Buy Tank!</button>
+        <!-- have to use onclick rather than ng-click -->
+        <button ng-model="button" ng-disabled="!fishCtrl.canLiveTogether || fishCtrl.tank.length == 0" ng-click="alert('Sorry, online purchase not available, please call store!')">Buy Tank!</button>
       </div>
 
       <div>

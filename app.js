@@ -37,8 +37,8 @@ function TankFish() {
     return ddo;
 }
 
-FishShopController.$inject = ['FishService'];
-function FishShopController(FishService) {
+FishShopController.$inject = ['FishService','$scope'];
+function FishShopController(FishService, $scope) {
   var shop = this;
   shop.shopFish = ['american_crayfish','barreleye','batfish','battered_cod','betta_splendens','bonnethead','cichlids','cleaner_shrimp','cocoa_damselfish','coelocanth','cookiecutter',
                     'cuttlefish','damselfish','dragon_wrasse','electrophorus','elephant_seal','elvers','fanfin_seadevil','fish_fingers','french_angel_fish','hammerhead','harlequin_shrimp',
@@ -68,7 +68,7 @@ function FishShopController(FishService) {
       if(error!==null && error.data!==null && error.data.errorMessage!==null){
         shop.message = error.data.errorMessage;
       } else{
-        shop.message = 'Technical issue, please try again';
+        shop.message = 'Technical issue, please try again. If problem persists consider another fish or contact store.';
       }
     });
 
@@ -79,7 +79,7 @@ function FishShopController(FishService) {
     //this way the item won't go into tank if there's an error
     var fish = shop.tank.slice();
     fish.splice(itemIndex, 1);
-    
+
     //compatible now? check and perform action if so
     shop.checkCompatibilityAndAction(fish,shop.performRemove,itemIndex);
 
@@ -124,6 +124,8 @@ function FishShopController(FishService) {
     return false;
   };
 
+  //give ng-click access to the alert function
+  $scope.alert = alert.bind(window);
 }
 
 
