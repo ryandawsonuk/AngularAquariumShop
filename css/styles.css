@@ -1,7 +1,6 @@
 
 
 table {
-color: #333;
 border-spacing: 0;
 border: none;
 }
@@ -36,7 +35,7 @@ tr td.buttoncol:hover { background: #666; color: #FFF; } /* Hover cell effect! *
 
 .button {
     background-color: #ccdcff; /* Blue */
-    color: black;
+    color: #504f5e;
     padding: 4px 8px;
     text-align: center;
     text-decoration: none;
@@ -60,14 +59,19 @@ div{
 
 h1{
   text-decoration: none;
-  color: white;
+  color: #f5f4ff;
 }
 h3{
   text-decoration: none;
-  color: white;
+  color: #f5f4ff;
 }
 span{
   text-decoration: none;
+}
+
+.message{
+  font-weight: bold;
+  color:#f5f4ff;
 }
 
 body {
@@ -78,4 +82,5 @@ body {
     background-size: cover;
     margin: 0;
     background-color: #bfc5cc;
+    color: #504f5e;
 }

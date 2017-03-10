@@ -15,7 +15,7 @@
       </div>
 
       <div style="padding-bottom:2em">
-        <span ng-bind="fishCtrl.message" style="font-weight: bold; color:white;"></span>
+        <span ng-bind="fishCtrl.message" class="message"></span>
         <button class="button" ng-disabled="!fishCtrl.canLiveTogether || fishCtrl.tank.length == 0" ng-click="alert('Sorry, online purchase not available, please call store!')">Buy Tank!</button>
       </div>
 
