@@ -10,12 +10,13 @@
   </head>
 <body>
    <div ng-controller="FishShopController as fishCtrl">
+     <center>
       <div>
         <h1>Choose Fish for your new Tank!</h1>
       </div>
 
       <div style="padding-bottom:2em">
-        <span ng-bind="fishCtrl.message" style="font-weight: bold"></span>
+        <span ng-bind="fishCtrl.message" style="font-weight: bold; color:white;"></span>
         <button class="button" ng-disabled="!fishCtrl.canLiveTogether || fishCtrl.tank.length == 0" ng-click="alert('Sorry, online purchase not available, please call store!')">Buy Tank!</button>
       </div>
 
@@ -35,7 +36,7 @@
           </div>
         </div>
       </div>
-
+    </center>
     </div>
 </body>
 </html>
