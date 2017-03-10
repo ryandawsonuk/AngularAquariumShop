@@ -1,12 +1,10 @@
-<h3>Tank selections</h3>
 <table border="1">
-<thead>
-  <th>Fish Name</th>
-  <th>Action</th>
-</thead>
+  <thead>
+    <th colspan="2">Tank Selections</th>
+  </thead>
 <tr ng-repeat="item in items">
   <td><span ng-bind="item"></span></td>
-  <td>
-    <button ng-click="onRemove({index: $index});">Remove from tank!</button></td>
+  <td class="buttoncol">
+    <button ng-click="onRemove({index: $index});" class="button">Remove from tank!</button></td>
 </tr>
 </table>
