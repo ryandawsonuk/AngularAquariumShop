@@ -11,12 +11,12 @@
 <body>
    <div ng-controller="FishShopController as fishCtrl" style="padding-left: 5pc">
       <div>
-        <h1>Choose Fish for your new Tank!</h1>
+        <h1>Choose Fish for your new Tank</h1>
       </div>
 
       <div style="padding-bottom:2em">
         <span ng-bind="fishCtrl.message" class="message"></span>
-        <button class="button" ng-disabled="!fishCtrl.canLiveTogether || fishCtrl.tank.length == 0" ng-click="alert('Sorry, online purchase not available, please call store!')">Buy Tank!</button>
+        <button class="button" ng-disabled="!fishCtrl.canLiveTogether || fishCtrl.tank.length == 0" ng-click="alert('Sorry, online purchase not available, please call store!')">Buy Tank</button>
       </div>
 
       <div>

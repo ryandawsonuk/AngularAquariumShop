@@ -6,17 +6,13 @@ border: none;
 }
 
 td, th {
-height: 30px;
-transition: all 0.3s; /* Simple transition for hover effect */
+height: 2em;
 }
 
 th {
-background: #EFEFEF; /* Darken header a bit */
-font-weight: bold;
-text-decoration: none;
-}
-
-table th:first-child{
+  background: #EFEFEF; /* Darker header  */
+  font-weight: bold;
+  text-decoration: none;
   border-radius:10px 10px 0 0;
 }
 
@@ -25,13 +21,13 @@ background: #FAFAFA;
 text-align: center;
 }
 
+tr td { background: #FEFEFE; padding: 0.3em;}
+
 /* Cells in even rows (2,4,6...) are one color */
 tr:nth-child(even) td { background: #F6F6F6; }
 
 /* Cells in odd rows (1,3,5...) are another (excludes header cells) */
 tr:nth-child(odd) td { background: #FEFEFE; }
-
-tr td.buttoncol:hover { background: #666; color: #FFF; } /* Hover cell effect! */
 
 .button {
     background-color: #ccdcff; /* Blue */
@@ -40,6 +36,10 @@ tr td.buttoncol:hover { background: #666; color: #FFF; } /* Hover cell effect! *
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; /* future proofing */
+    -khtml-border-radius: 5px; /* for old Konqueror browsers */
 }
 
 .button:hover {

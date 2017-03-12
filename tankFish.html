@@ -1,10 +1,10 @@
-<table border="1">
+<table >
   <thead>
     <th colspan="2">Tank Selections</th>
   </thead>
 <tr ng-repeat="item in items">
   <td><span ng-bind="item"></span></td>
   <td class="buttoncol">
-    <button ng-click="onRemove({index: $index});" class="button">Remove from tank!</button></td>
+    <button ng-click="onRemove({index: $index});" class="button">Remove from tank</button></td>
 </tr>
 </table>
