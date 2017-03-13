@@ -4,38 +4,12 @@
 var app = angular.module('FishShopApp', [])
 .controller('FishShopController', FishShopController)
 .service('FishService', FishService)
-.directive('shopFish', ShopFish)
-.directive('tankFish', TankFish)
 .constant('ApiBasePath', "https://fishshop.attest.tech");
 //CORS
 app.config(['$httpProvider', function ($httpProvider) {
    $httpProvider.defaults.useXDomain = true;
    delete $httpProvider.defaults.headers.common['X-Requested-With'];
 }]);
-
-function ShopFish() {
-    var ddo = {
-      templateUrl: 'shopFish.html',
-      scope: {
-        items: '<',
-        onAdd: '&'
-      }
-    };
-
-    return ddo;
-}
-
-function TankFish() {
-    var ddo = {
-      templateUrl: 'tankFish.html',
-      scope: {
-        items: '<',
-        onRemove: '&'
-      }
-    };
-
-    return ddo;
-}
 
 FishShopController.$inject = ['FishService','$scope'];
 function FishShopController(FishService, $scope) {
@@ -59,7 +33,13 @@ function FishShopController(FishService, $scope) {
           //there will be an action to perform now (either add or remove)
           //we only perform action after checking compatibility so that we don't perform in error condition
           action(actionParam);
-          shop.message = (shop.message? 'Chosen fish are compatible.' : 'Fish are not compatible, change selections before purchase.');
+
+          //if we just removed last fish then we don't need a message
+          if(shop.message && shop.tank.length==0){
+            shop.message = '';
+          } else{  //otherwise set message based on response
+            shop.message = (shop.message? 'Chosen fish are compatible.' : 'Fish are not compatible, change selections before purchase.');
+          }
         }
     })
     .catch(function (error) {
@@ -92,7 +72,6 @@ function FishShopController(FishService, $scope) {
 
 
   shop.addItem = function(itemIndex) {
-
     if(shop.duplicateCheck(shop.tank,shop.shopFish[itemIndex])){
       shop.message = shop.message+' Note - '+shop.shopFish[itemIndex]+' already in tank!';
       return;

@@ -23,7 +23,16 @@
         <div class="leftselectiontable">
           <h3 ng-if="fishCtrl.shopFish.length == 0" >No fish in shop.</h3>
           <div  ng-if="fishCtrl.shopFish.length > 0" >
-            <shop-fish items="fishCtrl.shopFish" on-add="fishCtrl.addItem(index)"></shop-fish>
+            <table >
+            <thead>
+              <th colspan="2">Fish Available</th>
+            </thead>
+            <tr ng-repeat="item in fishCtrl.shopFish">
+              <td><span ng-bind="item"></span></td>
+              <td class="buttoncol">
+                <button ng-click="fishCtrl.addItem($index);" class="button">Add to tank</button></td>
+            </tr>
+            </table>
           </div>
         </div>
 
@@ -31,7 +40,16 @@
 
           <h3 ng-if="fishCtrl.tank.length == 0" >No fish in tank - choose fish from shop.</h3>
           <div  ng-if="fishCtrl.tank.length > 0" >
-            <tank-fish items="fishCtrl.tank" on-remove="fishCtrl.removeItem(index)"></tank-fish>
+            <table >
+              <thead>
+                <th colspan="2">Tank Selections</th>
+              </thead>
+            <tr ng-repeat="item in fishCtrl.tank">
+              <td><span ng-bind="item"></span></td>
+              <td class="buttoncol">
+                <button ng-click="fishCtrl.removeItem($index);" class="button">Remove from tank</button></td>
+            </tr>
+            </table>
           </div>
         </div>
       </div>
